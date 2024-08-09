@@ -11,12 +11,12 @@ collection = db["inspections"]  # Replace with your collection name
 app = FastAPI()
 
 class TireData(BaseModel):
-    pressure_left_front: Optional[float] = None
-    pressure_right_front: Optional[float] = None
+    pressure_left_front: float = None
+    pressure_right_front: float = None
     condition_left_front: str
     condition_right_front: str
-    pressure_left_rear: Optional[float] = None
-    pressure_right_rear: Optional[float] = None
+    pressure_left_rear: float = None
+    pressure_right_rear: float = None
     condition_left_rear: str
     condition_right_rear: str
     summary: Optional[str] = None
@@ -24,8 +24,8 @@ class TireData(BaseModel):
 
 class BatteryData(BaseModel):
     make: str
-    replacement_date: Optional[datetime] = None
-    voltage: Optional[str] = None
+    replacement_date: datetime
+    voltage: str
     water_level: str
     damage: bool
     leak_or_rust: bool
@@ -61,8 +61,8 @@ class VoiceOfCustomerData(BaseModel):
     images: List[str] = []
 
 class Inspection(BaseModel):
-    truck_serial_number: str
-    truck_model: str
+    vehicle_serial_number: str
+    vehicle_model: str
     inspector_name: str
     employee_id: str
     date_time: datetime = Field(default_factory=datetime.utcnow)
@@ -71,12 +71,12 @@ class Inspection(BaseModel):
     service_meter_hours: int
     customer_name: str
     cat_customer_id: str
-    tires: TireData
-    battery: BatteryData
-    exterior: ExteriorData
-    brakes: BrakesData
-    engine: EngineData
-    voice_of_customer: VoiceOfCustomerData
+    tires: Optional[TireData] = None
+    battery: Optional[BatteryData] = None
+    exterior: Optional[ExteriorData] = None
+    brakes: Optional[BrakesData] = None
+    engine: Optional[EngineData] = None
+    voice_of_customer: Optional[VoiceOfCustomerData] = None  
 
 
 @app.post("/inspections/")
