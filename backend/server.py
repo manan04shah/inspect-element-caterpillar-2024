@@ -7,8 +7,6 @@ from datetime import datetime
 import dotenv
 from os import getenv
 
-import gemini
-
 dotenv.load_dotenv()
 mongoURI = getenv("MONGO_URI")
 
@@ -67,16 +65,6 @@ class EngineData(BaseModel):
 class VoiceOfCustomerData(BaseModel):
     feedback: Optional[str] = None
     images: List[str] = []
-    
-class CustomChecklist(BaseModel):
-    name: str
-    value: str
-    is_required: bool
-
-class CustomChecklistData(BaseModel):
-    checklist: List[CustomChecklist]
-    summary: Optional[str] = None
-    images: List[str] = []
 
 class Inspection(BaseModel):
     vehicle_serial_number: str
@@ -94,8 +82,7 @@ class Inspection(BaseModel):
     exterior: Optional[ExteriorData] = None
     brakes: Optional[BrakesData] = None
     engine: Optional[EngineData] = None
-    custom_checklist: Optional[CustomChecklistData] = None
-    voice_of_customer: Optional[VoiceOfCustomerData] = None  
+    voice_of_customer: Optional[VoiceOfCustomerData] = None 
 
 
 @app.post("/inspections/")
@@ -108,18 +95,11 @@ async def add_inspection(inspection: Inspection):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
-@app.post("/gemini/custom")
-async def gemini_custom_prompt(prompt: str):
+
+@app.get("/get_inspections/")
+async def get_inspections():
     try:
-        response = gemini.gemini_custom_prompt(prompt)
-        return {"response": response}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-    
-@app.post("/gemini/inspect-tyres")
-async def inspect_tyres(tire_data: TireData, equipment_type: str):
-    try:
-        response = gemini.inspect_tyres(tire_data.model_dump(), equipment_type=equipment_type)
-        return {"response": response}
+        inspections = collection.find()
+        return {"inspections": list(inspections)}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

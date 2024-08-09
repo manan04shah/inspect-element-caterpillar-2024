@@ -1,0 +1,255 @@
+{
+  "TIRES": {
+    "questions": [
+      {
+        "id": "tires_left_front_pressure",
+        "prompt": "What is the tire pressure for the left front tire?",
+        "expected_response": { "type": "float", "unit": "PSI" }
+      },
+      {
+        "id": "tires_right_front_pressure",
+        "prompt": "What is the tire pressure for the right front tire?",
+        "expected_response": { "type": "float", "unit": "PSI" }
+      },
+      {
+        "id": "tires_left_front_condition",
+        "prompt": "What is the condition of the left front tire?",
+        "expected_response": {
+          "type": "str",
+          "options": ["Good", "Ok", "Needs Replacement"]
+        }
+      },
+      {
+        "id": "tires_right_front_condition",
+        "prompt": "What is the condition of the right front tire?",
+        "expected_response": {
+          "type": "str",
+          "options": ["Good", "Ok", "Needs Replacement"]
+        }
+      },
+      {
+        "id": "tires_left_rear_pressure",
+        "prompt": "What is the tire pressure for the left rear tire?",
+        "expected_response": { "type": "float", "unit": "PSI" }
+      },
+      {
+        "id": "tires_right_rear_pressure",
+        "prompt": "What is the tire pressure for the right rear tire?",
+        "expected_response": { "type": "float", "unit": "PSI" }
+      },
+      {
+        "id": "tires_left_rear_condition",
+        "prompt": "What is the condition of the left rear tire?",
+        "expected_response": {
+          "type": "str",
+          "options": ["Good", "Ok", "Needs Replacement"]
+        }
+      },
+      {
+        "id": "tires_right_rear_condition",
+        "prompt": "What is the condition of the right rear tire?",
+        "expected_response": {
+          "type": "str",
+          "options": ["Good", "Ok", "Needs Replacement"]
+        }
+      },
+      {
+        "id": "tires_summary",
+        "prompt": "Provide an overall summary of the tire condition:",
+        "expected_response": { "type": "str", "max_length": 1000 }
+      },
+      {
+        "id": "tires_images",
+        "prompt": "Please attach images of each tire in the order: left front, right front, left rear, right rear.",
+        "expected_response": {
+          "type": "list",
+          "item_type": "str",
+          "min_items": 4,
+          "max_items": 4
+        }
+      }
+    ]
+  },
+  "BATTERY": {
+    "questions": [
+      {
+        "id": "battery_make",
+        "prompt": "What is the battery make?",
+        "expected_response": { "type": "str" }
+      },
+      {
+        "id": "battery_replacement_date",
+        "prompt": "When was the battery last replaced?",
+        "expected_response": { "type": "datetime" }
+      },
+      {
+        "id": "battery_voltage",
+        "prompt": "What is the battery voltage?",
+        "expected_response": { "type": "str" }
+      },
+      {
+        "id": "battery_water_level",
+        "prompt": "What is the battery water level?",
+        "expected_response": { "type": "str", "options": ["Good", "Ok", "Low"] }
+      },
+      {
+        "id": "battery_damage",
+        "prompt": "Is there any damage to the battery?",
+        "expected_response": { "type": "bool" }
+      },
+      {
+        "id": "battery_leak_or_rust",
+        "prompt": "Is there any leak or rust in the battery?",
+        "expected_response": { "type": "bool" }
+      },
+      {
+        "id": "battery_summary",
+        "prompt": "Provide an overall summary of the battery condition:",
+        "expected_response": { "type": "str", "max_length": 1000 }
+      },
+      {
+        "id": "battery_images",
+        "prompt": "Please attach images of the battery.",
+        "expected_response": { "type": "list", "item_type": "str" }
+      }
+    ]
+  },
+  "EXTERIOR": {
+    "questions": [
+      {
+        "id": "exterior_rust_or_damage",
+        "prompt": "Is there any rust, dent, or damage to the exterior?",
+        "expected_response": { "type": "bool" }
+      },
+      {
+        "id": "exterior_damage_explanation",
+        "prompt": "If yes to exterior damage, please explain:",
+        "expected_response": { "type": "str" }
+      },
+      {
+        "id": "exterior_oil_leak_suspension",
+        "prompt": "Is there any oil leak in the suspension?",
+        "expected_response": { "type": "bool" }
+      },
+      {
+        "id": "exterior_summary",
+        "prompt": "Provide an overall summary of the exterior condition:",
+        "expected_response": { "type": "str", "max_length": 1000 }
+      },
+      {
+        "id": "exterior_images",
+        "prompt": "Please attach images of the exterior.",
+        "expected_response": { "type": "list", "item_type": "str" }
+      }
+    ]
+  },
+  "BRAKES": {
+    "questions": [
+      {
+        "id": "brakes_fluid_level",
+        "prompt": "What is the brake fluid level?",
+        "expected_response": { "type": "str", "options": ["Good", "Ok", "Low"] }
+      },
+      {
+        "id": "brakes_condition_front",
+        "prompt": "What is the condition of the front brakes?",
+        "expected_response": {
+          "type": "str",
+          "options": ["Good", "Ok", "Needs Replacement"]
+        }
+      },
+      {
+        "id": "brakes_condition_rear",
+        "prompt": "What is the condition of the rear brakes?",
+        "expected_response": {
+          "type": "str",
+          "options": ["Good", "Ok", "Needs Replacement"]
+        }
+      },
+      {
+        "id": "brakes_emergency",
+        "prompt": "What is the condition of the emergency brake?",
+        "expected_response": { "type": "str", "options": ["Good", "Ok", "Low"] }
+      },
+      {
+        "id": "brakes_summary",
+        "prompt": "Provide an overall summary of the brake condition:",
+        "expected_response": { "type": "str", "max_length": 1000 }
+      },
+      {
+        "id": "brakes_images",
+        "prompt": "Please attach images of the brakes.",
+        "expected_response": { "type": "list", "item_type": "str" }
+      }
+    ]
+  },
+  "ENGINE": {
+    "questions": [
+      {
+        "id": "engine_rust_or_damage",
+        "prompt": "Is there any rust, dents, or damage in the engine?",
+        "expected_response": { "type": "bool" }
+      },
+      {
+        "id": "engine_damage_explanation",
+        "prompt": "If yes to engine damage, please explain:",
+        "expected_response": { "type": "str" }
+      },
+      {
+        "id": "engine_oil_condition",
+        "prompt": "What is the engine oil condition?",
+        "expected_response": { "type": "str", "options": ["Good", "Bad"] }
+      },
+      {
+        "id": "engine_oil_color",
+        "prompt": "What is the engine oil color?",
+        "expected_response": {
+          "type": "str",
+          "options": ["Clean", "Brown", "Black"]
+        }
+      },
+      {
+        "id": "engine_fluid_condition",
+        "prompt": "What is the brake fluid condition?",
+        "expected_response": { "type": "str", "options": ["Good", "Bad"] }
+      },
+      {
+        "id": "engine_fluid_color",
+        "prompt": "What is the brake fluid color?",
+        "expected_response": {
+          "type": "str",
+          "options": ["Clean", "Brown", "Black"]
+        }
+      },
+      {
+        "id": "engine_oil_leak",
+        "prompt": "Is there any oil leak in the engine?",
+        "expected_response": { "type": "bool" }
+      },
+      {
+        "id": "engine_summary",
+        "prompt": "Provide an overall summary of the engine condition:",
+        "expected_response": { "type": "str", "max_length": 1000 }
+      },
+      {
+        "id": "engine_images",
+        "prompt": "Please attach images of the engine.",
+        "expected_response": { "type": "list", "item_type": "str" }
+      }
+    ]
+  },
+  "VOICE OF CUSTOMER": {
+    "questions": [
+      {
+        "id": "voc_feedback",
+        "prompt": "Please provide any feedback from the customer:",
+        "expected_response": { "type": "str" }
+      },
+      {
+        "id": "voc_images",
+        "prompt": "Please attach any images related to the issues discussed with the customer.",
+        "expected_response": { "type": "list", "item_type": "str" }
+      }
+    ]
+  }
+}
