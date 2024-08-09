@@ -4,7 +4,13 @@ from pymongo import MongoClient
 from typing import List, Optional
 from datetime import datetime
 
-client = MongoClient("mongodb+srv://a7x:a7x@inspect-element.dwg4o.mongodb.net/?retryWrites=true&w=majority&appName=inspect-element")
+import dotenv
+from os import getenv
+
+dotenv.load_dotenv()
+mongoURI = getenv("MONGO_URI")
+
+client = MongoClient(mongoURI)
 db = client["inspect-element"]  # Replace with your database name
 collection = db["inspections"]  # Replace with your collection name
 
